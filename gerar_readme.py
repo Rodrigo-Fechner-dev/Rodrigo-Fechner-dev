@@ -1,4 +1,46 @@
-<div align="center">
+import os
+
+# 1. Cria a pasta para guardar as imagens SVG fisicamente
+os.makedirs('assets', exist_ok=True)
+
+# 2. Dados das suas habilidades
+skills = [
+    ("Python", 80, "python"),
+    ("Windows Server", 75, "windows"),
+    ("Linux", 60, "linux"),
+    ("Redes TCP/IP", 80, "redes"),
+    ("MySQL", 70, "mysql"),
+    ("HTML, CSS", 65, "html_css"),
+    ("Git", 75, "git")
+]
+
+# 3. Função que desenha o SVG idêntico ao seu HTML (incluindo o neon/glow verde)
+def gerar_svg(nome, pct, filename):
+    max_width = 270
+    fill_width = int(max_width * (pct / 100.0))
+    
+    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="450" height="25" viewBox="0 0 450 25">
+  <defs>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <text x="0" y="16" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;fill:#c9d1d9;">{nome}</text>
+  <rect x="130" y="7" width="270" height="8" rx="4" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <rect x="130" y="7" width="{fill_width}" height="8" rx="4" fill="#3fb950" filter="url(#glow)"/>
+  <text x="415" y="16" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:12px;fill:#8b949e;">{pct}%</text>
+</svg>"""
+    
+    with open(f'assets/{filename}.svg', 'w', encoding='utf-8') as f:
+        f.write(svg)
+
+# 4. Gerando os arquivos de imagem
+for nome, pct, filename in skills:
+    gerar_svg(nome, pct, filename)
+
+# 5. Gerando o novo README.md apontando para as imagens da pasta assets
+readme_content = """<div align="center">
   <h1>Rodrigo Dalavia Fechner</h1>
   <p>
     <img src="https://readme-typing-svg.demolab.com?font=monospace&size=14&pause=1000&color=3FB950&center=true&vCenter=true&width=500&height=30&lines=Otimizando+performance+e+entregando+resultados.;Python+%7C+RPA+%7C+Playwright+%7C+FastAPI+%7C+Pandas;Redes+TCP%2FIP+e+Infraestrutura" alt="Typing Effect" />
@@ -86,3 +128,9 @@ Olá, prazer — me chamo **Rodrigo** e atuo como **DevOps**. Minha trajetória 
   <a href="mailto:rodrigodalavia@gmail.com"><img src="https://img.shields.io/badge/✉%20rodrigodalavia@gmail.com-161b22?style=flat-square&logo=gmail&logoColor=c9d1d9"/></a>
   <img src="https://img.shields.io/badge/📍%20Porto%20Alegre,%20RS-161b22?style=flat-square&logo=google-maps&logoColor=red"/>
 </p>
+"""
+
+with open('README.md', 'w', encoding='utf-8') as f:
+    f.write(readme_content)
+
+print("Tudo pronto! Pasta 'assets' com imagens criadas e README.md atualizado.")
