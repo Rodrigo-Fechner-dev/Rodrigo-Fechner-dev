@@ -49,7 +49,7 @@ readme_content = """<div align="center">
 
 ### 👨‍💻 Sobre mim
 
-Olá, prazer — me chamo **Rodrigo** e atuo como **DevOps**. Minha trajetória começou em redes e infraestrutura, mas acabei descobrindo automações e decidi unir os dois mundos. Atualmente trabalho com desenvolvimento de automações em **Python** e também com infraestrutura, redes e servidores. Meu objetivo é entregar resultados valiosos automatizando processos ou dando suporte a sistemas legados.
+Olá, prazer me chamo **Rodrigo** e atuo como **DevOps**. Minha trajetória começou em redes e infraestrutura, mas acabei descobrindo automações e decidi unir os dois mundos. Atualmente trabalho com desenvolvimento de automações em **Python** e também com infraestrutura, redes e servidores. Meu objetivo é entregar resultados valiosos automatizando processos ou dando suporte a sistemas legados.
 
 ---
 
